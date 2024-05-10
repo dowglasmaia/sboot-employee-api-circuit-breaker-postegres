@@ -170,7 +170,7 @@
                 <version>3.0.36</version>
                 <executions>
                     <execution>
-                        <id>api-postagem</id>
+                        <id>api-employee</id>
                         <phase>generate-resources</phase>
                         <goals>
                             <goal>generate</goal>
@@ -180,6 +180,41 @@
                             <library>spring-boot</library>
                             <inputSpec>
                                 ${project.basedir}/src/main/resources/swagger/API-MS-REGISTRATION-OF-EMPLOYEE.yml
+                            </inputSpec>
+                            <modelPackage>${project.groupId}.provider.model</modelPackage>
+                            <apiPackage>${project.groupId}.provider.api</apiPackage>
+
+                            <configOptions>
+                                <delegatePattern>true</delegatePattern>
+                                <interfaceOnly>true</interfaceOnly>
+                                <dateLibrary>java8</dateLibrary>
+                            </configOptions>
+
+                            <modelNameSuffix>VO</modelNameSuffix>
+                            <generateSupportingFiles>false</generateSupportingFiles>
+                            <generateApiTests>false</generateApiTests>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+            <plugin>
+                <groupId>io.swagger.codegen.v3</groupId>
+                <artifactId>swagger-codegen-maven-plugin</artifactId>
+                <version>3.0.36</version>
+                <executions>
+                    <execution>
+                        <id>api-address</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <language>spring</language>
+                            <library>spring-boot</library>
+                            <inputSpec>
+                                ${project.basedir}/src/main/resources/swagger/address-api.yaml
                             </inputSpec>
                             <modelPackage>${project.groupId}.provider.model</modelPackage>
                             <apiPackage>${project.groupId}.provider.api</apiPackage>

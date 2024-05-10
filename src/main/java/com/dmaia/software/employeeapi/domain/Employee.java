@@ -5,7 +5,6 @@ import com.dmaia.software.employeeapi.utils.ValidationCPF;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,13 +29,16 @@ public class Employee extends ValidationCPF {
     private OffsetDateTime dateCrated;
     private OffsetDateTime dateUpdate;
 
+    private String addressZipCode;
+
     public Employee(String id,
                     String name,
                     String enroll,
                     String cpf,
                     String email,
                     OffsetDateTime dateCrated,
-                    OffsetDateTime dateUpdate) {
+                    OffsetDateTime dateUpdate,
+                    String addressZipCode){
         this.id = id;
         this.name = name;
         this.enroll = enroll;
@@ -44,9 +46,10 @@ public class Employee extends ValidationCPF {
         this.email = email;
         this.dateCrated = dateCrated;
         this.dateUpdate = dateUpdate;
+        this.addressZipCode = addressZipCode;
     }
 
-    public String setCpf(String cpf) {
+    public String setCpf(String cpf){
         if (isCpf(cpf)) {
             return cpf;
         }

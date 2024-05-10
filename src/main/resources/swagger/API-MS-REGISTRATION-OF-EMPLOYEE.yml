@@ -53,14 +53,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseError'    
+                $ref: '#/components/schemas/ResponseError'
         422:
           description: Unprocessable Entity
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseError'
-                
+
         500:
           description: Internal Server Error
           content:
@@ -73,7 +73,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseError'
-                
+
   /employees/{enroll}:
     get:
       tags:
@@ -123,14 +123,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseError'    
+                $ref: '#/components/schemas/ResponseError'
         422:
           description: Unprocessable Entity
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseError'
-                
+
         500:
           description: Internal Server Error
           content:
@@ -143,7 +143,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseError'
-  
+
 
 
 components:
@@ -153,6 +153,7 @@ components:
         - name
         - cpf
         - email
+        - zipCode
       type: object
       properties:
         name:
@@ -171,6 +172,9 @@ components:
           type: string
           #pattern: '^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$'
           example: 'employee@email.com'
+        zipCode:
+          type: string
+          example: '01214-000'
 
     GetEmployeeResponse:
       type: object
@@ -190,7 +194,7 @@ components:
           example: 'employee@email.com'
         enroll:
           type: string
-          example: '20121300'  
+          example: '20121300'
         date-crated:
           type: string
           #format: date-time
@@ -199,6 +203,39 @@ components:
           type: string
           #format: date-time
           example: '2023-01-20'
+        address:
+          $ref: '#/components/schemas/AddressResponse'
+
+    AddressResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the address
+        street:
+          type: string
+          description: Street address
+          example: 437 Lytton Ave
+        neighborhood:
+          type: string
+          example: Center
+        number:
+          type: string
+          description: Street number
+          example: 437
+        city:
+          type: string
+          description: City
+          example: Palo Alto
+        state:
+          type: string
+          description: State abbreviation
+          example: CA
+        zip:
+          type: string
+          description: ZIP code
+          example: '94301'
+
 
 
     ResponseError:

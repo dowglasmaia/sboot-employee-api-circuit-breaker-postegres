@@ -1,7 +1,8 @@
 package com.dmaia.software.employeeapi.controller;
 
-import com.dmaia.software.employeeapi.controller.mapper.EmployeeMapper;
-import com.dmaia.software.employeeapi.services.EmployeeService;
+import com.dmaia.software.employeeapi.services.CreateService;
+import com.dmaia.software.employeeapi.services.mapper.EmployeeMapper;
+import com.dmaia.software.employeeapi.services.FindEmployeeService;
 import com.dmaia.software.provider.api.EmployeesApi;
 import com.dmaia.software.provider.model.CrateEmployeeRequestVO;
 import com.dmaia.software.provider.model.GetEmployeeResponseVO;
@@ -18,23 +19,26 @@ import java.net.URI;
 public class EmployeeController implements EmployeesApi {
 
     @Autowired
-    private EmployeeService service;
+    private FindEmployeeService service;
+
+    @Autowired
+    private CreateService createService;
 
     @Override
     public ResponseEntity<Void> create(CrateEmployeeRequestVO body) {
-        var requestMapper = EmployeeMapper.toEmployee(body);
-        service.create(requestMapper);
+
+        var response = createService.create(body);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{enroll}")
-                .buildAndExpand(requestMapper.getEnroll()).toUri();
+                .buildAndExpand(response.getEnroll()).toUri();
         return ResponseEntity.created(uri).build();
     }
 
     @Override
     public ResponseEntity<GetEmployeeResponseVO> getByEnroll(String enroll) {
         var response = service.findByEnroll(enroll);
-        var resposneMapper = EmployeeMapper.fromEmployee(response.get());
-        return ResponseEntity.ok().body(resposneMapper);
+
+        return ResponseEntity.ok().body(response);
     }
 
 
