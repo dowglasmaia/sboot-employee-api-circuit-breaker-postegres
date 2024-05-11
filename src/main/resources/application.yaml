@@ -22,6 +22,37 @@ management:
   tracing:
     sampling:
       probability: 1
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health
+  health:
+    circuitbreakers:
+      enabled: true
+    ratelimiters:
+      enabled: true
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      address:
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 5
+        failureRateThreshold: 50
+        slowCallDurationThreshold: 15
+        slowCallRateThreshold: 80
+        minimumNumberOfCalls: 3
+        permittedNumberOfCallsInHalfOpenState: 3
+        waitDurationInOpenState: 60s
+        enableAutomaticTransitionFromOpenToClosedState: true
+        transitionFromOpenToClosedStateOnSuccessfulCall: true
+        registerHealthIndicator: true
+
+
+
 api:
   base:
     url:
