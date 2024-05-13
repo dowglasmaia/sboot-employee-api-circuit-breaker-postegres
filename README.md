@@ -8,6 +8,10 @@ These are some of the technologies and tools that I work with:<br>
 
 ![Java 17](https://img.shields.io/badge/-Java%2017-007396?style=flat-square&logo=java&logoColor=white)
 [![Spring Boot](https://img.shields.io/badge/-Spring%20Boot-6DB33F?style=flat-square&logo=spring&logoColor=white)](https://spring.io/projects/spring-boot)
+[![Resilience4j](https://img.shields.io/badge/-Resilience4j-F55749?style=flat-square&logo=java&logoColor=white)](https://resilience4j.github.io/resilience4j/)
+[![Grafana](https://img.shields.io/badge/-Grafana-F46800?style=flat-square&logo=grafana&logoColor=white)](https://grafana.com/)
+[![Prometheus](https://img.shields.io/badge/-Prometheus-E6522C?style=flat-square&logo=prometheus&logoColor=white)](https://prometheus.io/)
+[![Swagger](https://img.shields.io/badge/-Swagger-85EA2D?style=flat-square&logo=swagger&logoColor=black)](https://swagger.io/)
 
 
 ---
