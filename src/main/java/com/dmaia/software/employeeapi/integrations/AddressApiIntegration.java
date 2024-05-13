@@ -25,7 +25,7 @@ public class AddressApiIntegration {
     private AddressRedisService redisService;
 
 
-    @CircuitBreaker(name = "address" /* ,fallbackMethod = "getAddressFallback"*/)
+    @CircuitBreaker(name = "address", fallbackMethod = "getAddressFallback")
     public AddressResponseVO findByZipCode(String zipCode){
         log.info("Start findByZipCode for AddressApiIntegration");
         try {
@@ -44,7 +44,7 @@ public class AddressApiIntegration {
         }
     }
 
-    private AddressResponseVO getAddressFallback(String zipCode, Throwable cause) {
+    private AddressResponseVO getAddressFallback(String zipCode, Throwable cause){
         log.warn("[WARN] Fallback with id {}", zipCode);
         return redisService.findByZipCode(zipCode);
     }

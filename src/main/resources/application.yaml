@@ -18,6 +18,7 @@ spring:
     driver-class-name: org.postgresql.Driver
     port: 5432
 
+
 management:
   tracing:
     sampling:
@@ -34,8 +35,6 @@ management:
       enabled: true
     ratelimiters:
       enabled: true
-
-# prometheus
   metrics:
     enable:
       jvm: true
@@ -48,23 +47,21 @@ management:
     tags:
       application: 'ms-employee'
 
-
+#Circuit Breaker
 resilience4j:
   circuitbreaker:
     instances:
       address:
         slidingWindowType: COUNT_BASED
-        slidingWindowSize: 5
+        registerHealthIndicator: true
+        slidingWindowSize: 6
         failureRateThreshold: 50
-        slowCallDurationThreshold: 15
+        slowCallDurationThreshold: 100
         slowCallRateThreshold: 80
-        minimumNumberOfCalls: 3
-        permittedNumberOfCallsInHalfOpenState: 3
         waitDurationInOpenState: 60s
+        permittedNumberOfCallsInHalfOpenState: 3
         enableAutomaticTransitionFromOpenToClosedState: true
         transitionFromOpenToClosedStateOnSuccessfulCall: true
-        registerHealthIndicator: true
-
 
 
 api:
