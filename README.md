@@ -1,118 +1,74 @@
 
-# <img src="img/img.png" alt="Address Api" width="35" height="35"> Address Api   
+## Employee API   
 
-* API developed following the non-blocking reactive model with 17 Java and Spring Webflux.
+* API developed with 17 Java and Spring Boot 3.1.9
 ---
 ### ⚡ Technologies
 These are some of the technologies and tools that I work with:<br>
 
 ![Java 17](https://img.shields.io/badge/-Java%2017-007396?style=flat-square&logo=java&logoColor=white)
-![Spring WebFlux](https://img.shields.io/badge/-Spring%20WebFlux-FF9900?style=flat-square&logo=spring&logoColor=white)
-![MongoDB](https://img.shields.io/badge/-MongoDB-black?style=flat-square&logo=mongodb)
-![Jaeger](https://img.shields.io/badge/-Jaeger-00B7FF?style=flat-square&logo=jaeger&logoColor=white)
-![OpenTelemetry](https://img.shields.io/badge/-OpenTelemetry-CF6300?style=flat-square&logo=opentelemetry&logoColor=white)
+[![Spring Boot](https://img.shields.io/badge/-Spring%20Boot-6DB33F?style=flat-square&logo=spring&logoColor=white)](https://spring.io/projects/spring-boot)
+[![Resilience4j](https://img.shields.io/badge/-Resilience4j-F55749?style=flat-square&logo=java&logoColor=white)](https://resilience4j.github.io/resilience4j/)
+[![Grafana](https://img.shields.io/badge/-Grafana-F46800?style=flat-square&logo=grafana&logoColor=white)](https://grafana.com/)
+[![Prometheus](https://img.shields.io/badge/-Prometheus-E6522C?style=flat-square&logo=prometheus&logoColor=white)](https://prometheus.io/)
+[![Swagger](https://img.shields.io/badge/-Swagger-85EA2D?style=flat-square&logo=swagger&logoColor=black)](https://swagger.io/)
+[![Redis](https://img.shields.io/badge/-Redis-DC382D?style=flat-square&logo=redis&logoColor=white)](https://redis.io/)
 
 
 ---
-## <img src="img/flow.png" alt="Address Api" width="35" height="35"> Flow to obtain the address
-* <img src="./img/addresses-find-by-zipcode.svg" alt="Flow to obtain the address" width="1366" height="860">
+## Circuit Breaker Flow
+<img src="./img/circuit_breake.png" alt="Circuit Breaker " width="1200" height="860">
 
-## Configuration for telemetry collection with Optionlemetry and Jaeger.
+## Request Flow 
+<img src="./img/fluxo.png" alt="Circuit Breaker " width="1200" height="680">
 
----
-### Imagen Docker [ docker-compose.yaml ] - [ OpenTelemetry e Jaeger ]
-```yaml
-version: '3.8'
-networks:
-  public:
-  monit:
-  data:
-  api:
-
-services:
-  collector-api:
-    image: otel/opentelemetry-collector:latest
-    container_name: collector-api
-    volumes:
-      - ./collector/otel-collector-config.yaml:/etc/otel-collector-config.yaml
-    command: ["--config=/etc/otel-collector-config.yaml"]
-    ports:
-      - 4317:4317
-      - 4318:4318
-    networks:
-      - api
-      - monit
-
-  jaeger-api:
-    image: jaegertracing/opentelemetry-all-in-one
-    container_name: jaeger-api
-    ports:
-      - 16686:16686
-    networks:
-      - monit
-    depends_on:
-      - collector-api
-```
-### otel-collector-config-yaml
-
----
-```yaml
-receivers:
-  otlp:
-    protocols:
-      grpc:
-      http:
-exporters:
-  otlp/jaeger:
-    endpoint: jaeger-api:4317
-    tls:
-      insecure: true
-service:
-  pipelines:
-    traces:
-      receivers: [otlp]
-      exporters: [otlp/jaeger]
-```
-
-### Configuration of Spring Actuator in your Spring application from Collecting Detailed Metrics
+## Configuration for Circuit Breaker
 
 ---
 ```yaml
 management:
   tracing:
     sampling:
-      probability: 1.0
-  endpoints:
-    web:
-      exposure:
-        include: '*'
+      probability: 1
   endpoint:
     health:
       show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  health:
+    circuitbreakers:
+      enabled: true
+    ratelimiters:
+      enabled: true
   metrics:
     enable:
       jvm: true
     export:
       prometheus:
         enabled: true
-    tags:
-      application: 'NAME OF YOUR API, for example - "address-api" '
     distribution:
       slo:
         http: '5ms,10ms,25ms,50ms,100ms,200ms,300ms,400ms,500ms,1s,2s'
-      percentiles-histogram:
-        http:
-          server:
-            requests: true
-
-info:
-  app:
-    name: '@project.name@'
-    description: '@project.description@'
-    version: '@project.version@'
-    encoding: '@project.build.sourceEncoding@'
-    java:
-      version: '@java.version@'
+    tags:
+      application: 'ms-employee'
+      
+#Circuit Breaker
+resilience4j:
+  circuitbreaker:
+    instances:
+      address:
+        slidingWindowType: COUNT_BASED
+        registerHealthIndicator: true
+        slidingWindowSize: 6
+        failureRateThreshold: 50
+        slowCallDurationThreshold: 100
+        slowCallRateThreshold: 80
+        waitDurationInOpenState: 60s
+        permittedNumberOfCallsInHalfOpenState: 3
+        enableAutomaticTransitionFromOpenToClosedState: true
+        transitionFromOpenToClosedStateOnSuccessfulCall: true
 
 ```
 
@@ -123,69 +79,94 @@ info:
 ```xml
 <!--Dependencies -->
 <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-actuator</artifactId>
+    <groupId>redis.clients</groupId>
+    <artifactId>jedis</artifactId>
+    <version>4.4.6</version>
 </dependency>
 
 <dependency>
-    <groupId>io.opentelemetry</groupId>
-    <artifactId>opentelemetry-api</artifactId>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-actuator</artifactId>
 </dependency>
 
 <dependency>
-    <groupId>io.micrometer</groupId>
-    <artifactId>micrometer-registry-prometheus</artifactId>
-    <scope>runtime</scope>
+<groupId>org.springframework.cloud</groupId>
+<artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
 </dependency>
 
 <dependency>
-    <groupId>com.google.protobuf</groupId>
-    <artifactId>protobuf-java</artifactId>
-    <version>3.18.1</version>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-data-redis</artifactId>
+</dependency>
+
+<dependency>
+<groupId>io.micrometer</groupId>
+<artifactId>micrometer-registry-prometheus</artifactId>
+<scope>runtime</scope>
 </dependency>
         
 <!--Management -->
 <dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-dependencies</artifactId>
-            <version>2021.0.9</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-    
-        <dependency>
-            <groupId>io.opentelemetry</groupId>
-            <artifactId>opentelemetry-bom</artifactId>
-            <version>1.37.0</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-    
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-sleuth-otel-dependencies</artifactId>
-            <version>1.1.2</version>
-            <scope>import</scope>
-            <type>pom</type>
-        </dependency>
-    </dependencies>
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+    </dependency>
+</dependencies>
 </dependencyManagement>
 ```
-### I download the option of Optionlemetry at the link. https://github.com/open-telemetry/opentelemetry-java-instrumentation
- 
-* To run the API Jar, follow the steps demonstrated in the step-by-step walkthrough video: <a href="https://youtu.be/o101JLsEEiY?si=8o7jfxre3m-5vplP" target="_blank">step-by-step walkthrough video</a>
----
-### Execução
-```bash
-docker-compose up --build
+
+### Class Java
+```java
+@Slf4j
+@Component
+public class AddressApiIntegration {
+
+    @Value("${api.base.url.address}")
+    private String baseUrl;
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @Autowired
+    private AddressRedisService redisService;
+
+
+    @CircuitBreaker(name = "address", fallbackMethod = "getAddressFallback")
+    public AddressResponseVO findByZipCode(String zipCode){
+        log.info("Start findByZipCode for AddressApiIntegration");
+        try {
+            String path = "api/v1/addresses/find-by-zipcode?zipCode=";
+
+            String url = baseUrl.concat(path + zipCode);
+
+            var addressResponse = restTemplate.getForObject(url, AddressResponseVO.class);
+
+            redisService.save(addressResponse, zipCode);
+            return addressResponse;
+
+        } catch (Exception e) {
+            log.error("ERROR: {}", e.getMessage());
+            throw new ObjectNotFoundExeption("Address not found.", HttpStatus.FOUND);
+        }
+    }
+
+    private AddressResponseVO getAddressFallback(String zipCode, Throwable cause){
+        log.warn("[WARN] Fallback with id {}", zipCode);
+        return redisService.findByZipCode(zipCode);
+    }
+}
+
 ```
 
+---
+
 ### Technology References
-* [Opentelemetry Docs](https://opentelemetry.io/docs)
-* [Jaeger Docs](https://www.jaegertracing.io/docs)
-* [Spring Webflux](https://docs.spring.io/spring-framework/reference/web/webflux.html)
-* [Dockerfile Reference](https://docs.docker.com/reference/dockerfile)
+* [Resilience4j Docs](https://resilience4j.readme.io/docs/circuitbreaker)
+* [Spring Boot3](https://docs.spring.io/spring-boot/docs/3.1.11/reference/html/)
+
 
 

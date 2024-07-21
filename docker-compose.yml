@@ -1,39 +1,24 @@
-version: '3.8'
-
-networks:
-  api:
-
+version: "3.8"
 services:
-  collector-api:
-    image: otel/opentelemetry-collector:latest
-    container_name: collector-api
+  postegre_db:
+    container_name: postegre_db
+    image: postgres:14.12-alpine3.18
+    networks:
+      - maianet
+    environment:
+      - POSTGRES_USER=maia
+      - POSTGRES_PASSWORD=maiapw
+    ports:
+      - 5432:5432
     volumes:
-      - ./collector/otel-collector-config.yaml:/etc/otel-collector-config.yaml
-    command: ["--config=/etc/otel-collector-config.yaml"]
-    ports:
-      - 4317:4317
-      - 4318:4318
-    networks:
-      - api
-
-  jaeger-api:
-    image: jaegertracing/opentelemetry-all-in-one
-    container_name: jaeger-api
-    ports:
-      - 16686:16686
-    networks:
-      - api
-    depends_on:
-      - collector-api
+      - postgresql:/var/lib/postgresql
+      - postgresql_data:/var/lib/postgresql/data
 
   api:
-    #build:
-      #context: .
-      #dockerfile: Dockerfile
     image: dowglasmaia/address-api
     container_name: address-api
     networks:
-      - api
+      - maianet
     ports:
       - 8088:8088
     restart: unless-stopped
@@ -59,7 +44,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
     networks:
-      - api
+      - maianet
 
   mongo-express:
     image: mongo-express
@@ -72,4 +57,82 @@ services:
       ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
       ME_CONFIG_BASICAUTH: false
     networks:
-      - api
+      - maianet
+
+  redis:
+    image: redis
+    command: redis-server
+    hostname: redis
+    ports:
+      - 6379:6379
+
+  prometheus:
+    image: prom/prometheus:latest
+    user: "root:root"
+    container_name: prometheus
+    restart: unless-stopped
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus/prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+    ports:
+      - 9090:9090
+    networks:
+      - maianet
+
+  grafana:
+    image: grafana/grafana:11.1.0
+    user: "root:root"
+    container_name: grafana
+    volumes:
+      - ./grafana:/var/lib/grafana
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    networks:
+      - maianet
+    depends_on:
+      - prometheus
+    environment:
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_BASIC_ENABLED=false
+      - GF_FEATURE_TOGGLES_ENABLE=accessControlOnCall
+      - GF_INSTALL_PLUGINS=https://storage.googleapis.com/integration-artifacts/grafana-lokiexplore-app/grafana-lokiexplore-app-latest.zip;grafana-lokiexplore-app
+
+  loki:
+    image: grafana/loki:main-e9b6ce9
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./lokiconfig/local-config.yaml:/etc/loki/local-config.yaml
+    command:
+      - -config.file=/etc/loki/local-config.yaml
+      - -print-config-stderr=true
+    networks:
+      - maianet
+
+  promtail:
+    image: grafana/promtail:2.0.0
+    command: -config.file=/etc/promtail/config.yaml
+    volumes:
+      - "./promtail/config.yaml:/etc/promtail/config.yaml"
+      - "./logs:/logs"
+      - "./tmp:/tmp"
+    networks:
+      - maianet
+    ports:
+      - 9080:9080
+
+networks:
+  maianet:
+    driver: bridge
+
+volumes:
+  postgresql:
+  postgresql_data:
+  prometheus_data:

@@ -1,0 +1,667 @@
+2024-07-21T11:33:05.402-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] c.d.s.e.EmployeeApiApplication           : Starting EmployeeApiApplication using Java 17.0.8 with PID 39780 (D:\projetos\sboot-employee-api-circuit-breaker-postegres\target\classes started by dowgl in D:\projetos\sboot-employee-api-circuit-breaker-postegres)
+2024-07-21T11:33:05.410-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] c.d.s.e.EmployeeApiApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-07-21T11:33:05.471-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-07-21T11:33:05.472-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-07-21T11:33:06.393-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-07-21T11:33:06.394-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-07-21T11:33:06.422-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2024-07-21T11:33:06.766-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-07-21T11:33:06.767-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-21T11:33:06.920-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 149 ms. Found 1 JPA repository interface.
+2024-07-21T11:33:06.927-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-07-21T11:33:06.927-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-07-21T11:33:06.932-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.dmaia.software.employeeapi.repository.EmployeeRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2024-07-21T11:33:06.933-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 0 Redis repository interfaces.
+2024-07-21T11:33:07.222-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=597909c8-4e46-32a2-a3da-3e26178cf8df
+2024-07-21T11:33:08.177-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2024-07-21T11:33:08.189-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-21T11:33:08.190-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-07-21T11:33:08.259-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-21T11:33:08.259-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2786 ms
+2024-07-21T11:33:08.457-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-21T11:33:09.812-03:00 ERROR [ms-employee,,] 39780 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+
+org.postgresql.util.PSQLException: FATAL: database "employeedb" does not exist
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2713) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.core.v3.QueryExecutorImpl.readStartupMessages(QueryExecutorImpl.java:2825) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.core.v3.QueryExecutorImpl.<init>(QueryExecutorImpl.java:175) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:313) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:263) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.Driver.makeConnection(Driver.java:443) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.Driver.connect(Driver.java:297) ~[postgresql-42.6.1.jar:42.6.1]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-5.0.1.jar:na]
+	at org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration.getConnectionUrl(H2ConsoleAutoConfiguration.java:94) ~[spring-boot-autoconfigure-3.1.9.jar:3.1.9]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at java.base/java.util.stream.SortedOps$RefSortingSink.end(SortedOps.java:395) ~[na:na]
+	at java.base/java.util.stream.Sink$ChainedReference.end(Sink.java:258) ~[na:na]
+	at java.base/java.util.stream.Sink$ChainedReference.end(Sink.java:258) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:510) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:575) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluateToArrayNode(AbstractPipeline.java:260) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:616) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:622) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.toList(ReferencePipeline.java:627) ~[na:na]
+	at org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration.logDataSources(H2ConsoleAutoConfiguration.java:86) ~[spring-boot-autoconfigure-3.1.9.jar:3.1.9]
+	at org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration.lambda$h2Console$0(H2ConsoleAutoConfiguration.java:69) ~[spring-boot-autoconfigure-3.1.9.jar:3.1.9]
+	at org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration.withThreadContextClassLoader(H2ConsoleAutoConfiguration.java:78) ~[spring-boot-autoconfigure-3.1.9.jar:3.1.9]
+	at org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration.h2Console(H2ConsoleAutoConfiguration.java:69) ~[spring-boot-autoconfigure-3.1.9.jar:3.1.9]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:139) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:646) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:638) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1330) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1160) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:558) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:518) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:204) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:210) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:201) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addServletContextInitializerBeans(ServletContextInitializerBeans.java:96) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:85) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:261) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:235) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4866) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1332) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1322) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145) ~[na:na]
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:866) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:845) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1332) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1322) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145) ~[na:na]
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:866) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:240) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:433) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:921) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:437) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:123) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:104) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:489) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:211) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:183) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:161) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:609) ~[spring-context-6.0.17.jar:6.0.17]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:738) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:440) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:324) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1317) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) ~[spring-boot-3.1.9.jar:3.1.9]
+	at com.dmaia.software.employeeapi.EmployeeApiApplication.main(EmployeeApiApplication.java:16) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.9.jar:3.1.9]
+
+2024-07-21T11:33:10.168-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-21T11:33:10.238-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.22.Final
+2024-07-21T11:33:10.240-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2024-07-21T11:33:10.541-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-21T11:33:10.573-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-21T11:33:11.589-03:00 ERROR [ms-employee,,] 39780 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+
+org.postgresql.util.PSQLException: FATAL: database "employeedb" does not exist
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2713) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.core.v3.QueryExecutorImpl.readStartupMessages(QueryExecutorImpl.java:2825) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.core.v3.QueryExecutorImpl.<init>(QueryExecutorImpl.java:175) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:313) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:263) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.Driver.makeConnection(Driver.java:443) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.Driver.connect(Driver.java:297) ~[postgresql-42.6.1.jar:42.6.1]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-5.0.1.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:437) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:61) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:279) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:193) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:69) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:119) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:264) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:239) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:216) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:231) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:199) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:169) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1383) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1454) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.0.17.jar:6.0.17]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:376) ~[spring-orm-6.0.17.jar:6.0.17]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.0.17.jar:6.0.17]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.0.17.jar:6.0.17]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:352) ~[spring-orm-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1815) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1764) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:596) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:518) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1165) ~[spring-context-6.0.17.jar:6.0.17]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:939) ~[spring-context-6.0.17.jar:6.0.17]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:615) ~[spring-context-6.0.17.jar:6.0.17]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:738) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:440) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:324) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1317) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) ~[spring-boot-3.1.9.jar:3.1.9]
+	at com.dmaia.software.employeeapi.EmployeeApiApplication.main(EmployeeApiApplication.java:16) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.9.jar:3.1.9]
+
+2024-07-21T11:33:11.591-03:00  WARN [ms-employee,,] 39780 --- [restartedMain] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
+
+java.lang.NullPointerException: Cannot invoke "org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(java.sql.SQLException, String)" because the return value of "org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.sqlExceptionHelper()" is null
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:116) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:279) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:193) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:69) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:119) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:264) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:239) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:216) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:231) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:199) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:169) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1383) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1454) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.0.17.jar:6.0.17]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:376) ~[spring-orm-6.0.17.jar:6.0.17]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.0.17.jar:6.0.17]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.0.17.jar:6.0.17]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:352) ~[spring-orm-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1815) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1764) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:596) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:518) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1165) ~[spring-context-6.0.17.jar:6.0.17]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:939) ~[spring-context-6.0.17.jar:6.0.17]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:615) ~[spring-context-6.0.17.jar:6.0.17]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:738) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:440) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:324) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1317) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) ~[spring-boot-3.1.9.jar:3.1.9]
+	at com.dmaia.software.employeeapi.EmployeeApiApplication.main(EmployeeApiApplication.java:16) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.9.jar:3.1.9]
+
+2024-07-21T11:33:11.612-03:00  WARN [ms-employee,,] 39780 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-07-21T11:33:12.362-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-21T11:33:12.381-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-21T11:33:13.416-03:00 ERROR [ms-employee,,] 39780 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+
+org.postgresql.util.PSQLException: FATAL: database "employeedb" does not exist
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2713) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.core.v3.QueryExecutorImpl.readStartupMessages(QueryExecutorImpl.java:2825) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.core.v3.QueryExecutorImpl.<init>(QueryExecutorImpl.java:175) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:313) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:263) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.Driver.makeConnection(Driver.java:443) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.Driver.connect(Driver.java:297) ~[postgresql-42.6.1.jar:42.6.1]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-5.0.1.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:437) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:46) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:39) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.tool.schema.internal.exec.ImprovedExtractionContextImpl.getJdbcConnection(ImprovedExtractionContextImpl.java:63) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.tool.schema.extract.spi.ExtractionContext.getQueryResults(ExtractionContext.java:43) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.tool.schema.extract.internal.SequenceInformationExtractorLegacyImpl.extractMetadata(SequenceInformationExtractorLegacyImpl.java:39) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.initializeSequences(DatabaseInformationImpl.java:66) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.<init>(DatabaseInformationImpl.java:60) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.tool.schema.internal.Helper.buildDatabaseInformation(Helper.java:185) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:98) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:284) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:143) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:140) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:293) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:444) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1458) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.0.17.jar:6.0.17]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:376) ~[spring-orm-6.0.17.jar:6.0.17]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.0.17.jar:6.0.17]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.0.17.jar:6.0.17]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:352) ~[spring-orm-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1815) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1764) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:596) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:518) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1165) ~[spring-context-6.0.17.jar:6.0.17]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:939) ~[spring-context-6.0.17.jar:6.0.17]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:615) ~[spring-context-6.0.17.jar:6.0.17]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:738) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:440) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:324) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1317) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) ~[spring-boot-3.1.9.jar:3.1.9]
+	at com.dmaia.software.employeeapi.EmployeeApiApplication.main(EmployeeApiApplication.java:16) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.9.jar:3.1.9]
+
+2024-07-21T11:33:13.419-03:00  WARN [ms-employee,,] 39780 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 3D000
+2024-07-21T11:33:13.419-03:00 ERROR [ms-employee,,] 39780 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : FATAL: database "employeedb" does not exist
+2024-07-21T11:33:13.424-03:00 ERROR [ms-employee,,] 39780 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.GenericJDBCException: Unable to open JDBC Connection for DDL execution [FATAL: database "employeedb" does not exist] [n/a]
+2024-07-21T11:33:13.424-03:00  WARN [ms-employee,,] 39780 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.GenericJDBCException: Unable to open JDBC Connection for DDL execution [FATAL: database "employeedb" does not exist] [n/a]
+2024-07-21T11:33:13.429-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-07-21T11:33:13.447-03:00  INFO [ms-employee,,] 39780 --- [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-07-21T11:33:13.464-03:00 ERROR [ms-employee,,] 39780 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.GenericJDBCException: Unable to open JDBC Connection for DDL execution [FATAL: database "employeedb" does not exist] [n/a]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1768) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:596) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:518) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1165) ~[spring-context-6.0.17.jar:6.0.17]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:939) ~[spring-context-6.0.17.jar:6.0.17]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:615) ~[spring-context-6.0.17.jar:6.0.17]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:738) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:440) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:324) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1317) ~[spring-boot-3.1.9.jar:3.1.9]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) ~[spring-boot-3.1.9.jar:3.1.9]
+	at com.dmaia.software.employeeapi.EmployeeApiApplication.main(EmployeeApiApplication.java:16) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.9.jar:3.1.9]
+Caused by: jakarta.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.GenericJDBCException: Unable to open JDBC Connection for DDL execution [FATAL: database "employeedb" does not exist] [n/a]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421) ~[spring-orm-6.0.17.jar:6.0.17]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.0.17.jar:6.0.17]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:352) ~[spring-orm-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1815) ~[spring-beans-6.0.17.jar:6.0.17]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1764) ~[spring-beans-6.0.17.jar:6.0.17]
+	... 21 common frames omitted
+Caused by: org.hibernate.exception.GenericJDBCException: Unable to open JDBC Connection for DDL execution [FATAL: database "employeedb" does not exist] [n/a]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:61) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:74) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:39) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.tool.schema.internal.exec.ImprovedExtractionContextImpl.getJdbcConnection(ImprovedExtractionContextImpl.java:63) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.tool.schema.extract.spi.ExtractionContext.getQueryResults(ExtractionContext.java:43) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.tool.schema.extract.internal.SequenceInformationExtractorLegacyImpl.extractMetadata(SequenceInformationExtractorLegacyImpl.java:39) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.initializeSequences(DatabaseInformationImpl.java:66) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.<init>(DatabaseInformationImpl.java:60) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.tool.schema.internal.Helper.buildDatabaseInformation(Helper.java:185) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:98) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:284) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:143) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:140) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:293) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:444) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1458) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.0.17.jar:6.0.17]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:376) ~[spring-orm-6.0.17.jar:6.0.17]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.0.17.jar:6.0.17]
+	... 25 common frames omitted
+Caused by: org.postgresql.util.PSQLException: FATAL: database "employeedb" does not exist
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2713) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.core.v3.QueryExecutorImpl.readStartupMessages(QueryExecutorImpl.java:2825) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.core.v3.QueryExecutorImpl.<init>(QueryExecutorImpl.java:175) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:313) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:263) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.Driver.makeConnection(Driver.java:443) ~[postgresql-42.6.1.jar:42.6.1]
+	at org.postgresql.Driver.connect(Driver.java:297) ~[postgresql-42.6.1.jar:42.6.1]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-5.0.1.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:437) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:46) ~[hibernate-core-6.2.22.Final.jar:6.2.22.Final]
+	... 45 common frames omitted
+
+2024-07-21T11:35:25.816-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] c.d.s.e.EmployeeApiApplication           : Starting EmployeeApiApplication using Java 17.0.8 with PID 16656 (D:\projetos\sboot-employee-api-circuit-breaker-postegres\target\classes started by dowgl in D:\projetos\sboot-employee-api-circuit-breaker-postegres)
+2024-07-21T11:35:25.852-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] c.d.s.e.EmployeeApiApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-07-21T11:35:25.910-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-07-21T11:35:25.910-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-07-21T11:35:26.644-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-07-21T11:35:26.644-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-07-21T11:35:26.665-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 0 Redis repository interfaces.
+2024-07-21T11:35:26.991-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-07-21T11:35:26.991-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-21T11:35:27.136-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 141 ms. Found 1 JPA repository interface.
+2024-07-21T11:35:27.144-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-07-21T11:35:27.144-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-07-21T11:35:27.150-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.dmaia.software.employeeapi.repository.EmployeeRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2024-07-21T11:35:27.150-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 0 Redis repository interfaces.
+2024-07-21T11:35:27.422-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=597909c8-4e46-32a2-a3da-3e26178cf8df
+2024-07-21T11:35:28.389-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2024-07-21T11:35:28.399-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-21T11:35:28.400-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-07-21T11:35:28.468-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-21T11:35:28.469-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2558 ms
+2024-07-21T11:35:28.665-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-21T11:35:28.813-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1092e7b1
+2024-07-21T11:35:28.815-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-21T11:35:28.826-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost/employeedb'
+2024-07-21T11:35:29.183-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-21T11:35:29.244-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.22.Final
+2024-07-21T11:35:29.246-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2024-07-21T11:35:29.514-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-21T11:35:30.151-03:00  WARN [ms-employee,,] 16656 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-07-21T11:35:30.931-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-21T11:35:30.992-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-21T11:35:31.738-03:00  WARN [ms-employee,,] 16656 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-21T11:35:32.679-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-07-21T11:35:32.820-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 4 endpoint(s) beneath base path '/actuator'
+2024-07-21T11:35:32.896-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2024-07-21T11:35:32.986-03:00  INFO [ms-employee,,] 16656 --- [restartedMain] c.d.s.e.EmployeeApiApplication           : Started EmployeeApiApplication in 7.715 seconds (process running for 9.321)
+2024-07-21T11:35:34.521-03:00  INFO [ms-employee,,] 16656 --- [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-21T11:35:34.521-03:00  INFO [ms-employee,,] 16656 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-21T11:35:34.523-03:00  INFO [ms-employee,,] 16656 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-21T11:41:27.056-03:00  WARN [ms-employee,,] 16656 --- [http-nio-8082-exec-1] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@1092e7b1 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-07-21T11:41:27.058-03:00  WARN [ms-employee,,] 16656 --- [http-nio-8082-exec-1] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@1d1f9d9f (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-07-21T11:41:27.059-03:00  WARN [ms-employee,,] 16656 --- [http-nio-8082-exec-1] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@3e459a34 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-07-21T11:41:27.060-03:00  WARN [ms-employee,,] 16656 --- [http-nio-8082-exec-1] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@4e3265aa (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-07-21T11:41:27.061-03:00  WARN [ms-employee,,] 16656 --- [http-nio-8082-exec-1] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@186e03a4 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-07-21T11:41:27.061-03:00  WARN [ms-employee,,] 16656 --- [http-nio-8082-exec-1] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@797c8653 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-07-21T11:41:27.062-03:00  WARN [ms-employee,,] 16656 --- [http-nio-8082-exec-1] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@6b7a2772 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-07-21T11:41:27.063-03:00  WARN [ms-employee,,] 16656 --- [http-nio-8082-exec-1] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@36b81082 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-07-21T11:41:27.064-03:00  WARN [ms-employee,,] 16656 --- [http-nio-8082-exec-1] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@5e2346d2 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-07-21T11:41:27.064-03:00  WARN [ms-employee,,] 16656 --- [http-nio-8082-exec-1] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@43f00d5b (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-07-21T11:41:32.721-03:00  INFO [ms-employee,,] 16656 --- [http-nio-8082-exec-3] c.d.s.e.i.AddressApiIntegration          : Start findByZipCode for AddressApiIntegration
+2024-07-21T11:41:34.350-03:00  INFO [ms-employee,,] 16656 --- [http-nio-8082-exec-3] c.d.s.e.s.redis.AddressRedisService      : Start save cache Address. class AddressResponseVO {
+    id: 669d1e1e0adb8151946114ea
+    street: Rua Maria Saturnina de Jesus
+    neighborhood: Forquilhas
+    number: null
+    city: São José
+    state: SC
+    zip: 88107-846
+}
+2024-07-21T11:43:26.975-03:00  INFO [ms-employee,,] 16656 --- [http-nio-8082-exec-9] c.d.s.e.i.AddressApiIntegration          : Start findByZipCode for AddressApiIntegration
+2024-07-21T11:43:27.016-03:00  INFO [ms-employee,,] 16656 --- [http-nio-8082-exec-9] c.d.s.e.s.redis.AddressRedisService      : Start save cache Address. class AddressResponseVO {
+    id: 669d1e1e0adb8151946114ea
+    street: Rua Maria Saturnina de Jesus
+    neighborhood: Forquilhas
+    number: null
+    city: São José
+    state: SC
+    zip: 88107-846
+}
+2024-07-21T14:33:57.338-03:00  WARN [ms-employee,,] 16656 --- [http-nio-8082-exec-10] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@253f53d4 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-07-21T14:33:57.461-03:00  WARN [ms-employee,,] 16656 --- [http-nio-8082-exec-10] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@e1d6fe0 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-07-21T14:33:57.462-03:00  WARN [ms-employee,,] 16656 --- [http-nio-8082-exec-10] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@67827e37 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-07-21T14:33:57.462-03:00  WARN [ms-employee,,] 16656 --- [http-nio-8082-exec-10] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@387c20e0 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-07-21T14:33:57.463-03:00  WARN [ms-employee,,] 16656 --- [http-nio-8082-exec-10] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@4ff52a09 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-07-21T14:33:57.464-03:00  WARN [ms-employee,,] 16656 --- [http-nio-8082-exec-10] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@2af22e78 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-07-21T14:33:57.466-03:00  WARN [ms-employee,,] 16656 --- [http-nio-8082-exec-10] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@5ef59ed7 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-07-21T14:33:57.468-03:00  WARN [ms-employee,,] 16656 --- [http-nio-8082-exec-10] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@757cec9 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-07-21T14:33:57.470-03:00  WARN [ms-employee,,] 16656 --- [http-nio-8082-exec-10] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@61141948 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-07-21T14:33:57.471-03:00  WARN [ms-employee,,] 16656 --- [http-nio-8082-exec-10] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@5a2e7afc (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-07-21T14:33:57.562-03:00  INFO [ms-employee,,] 16656 --- [http-nio-8082-exec-10] c.d.s.e.i.AddressApiIntegration          : Start findByZipCode for AddressApiIntegration
+2024-07-21T14:33:59.551-03:00  INFO [ms-employee,,] 16656 --- [http-nio-8082-exec-10] c.d.s.e.s.redis.AddressRedisService      : Start save cache Address. class AddressResponseVO {
+    id: 669d4687d8f46f4e0d96b3ca
+    street: Rua Maria Saturnina de Jesus
+    neighborhood: Forquilhas
+    number: null
+    city: São José
+    state: SC
+    zip: 88107-846
+}
+2024-07-21T14:34:00.843-03:00  INFO [ms-employee,,] 16656 --- [http-nio-8082-exec-2] c.d.s.e.i.AddressApiIntegration          : Start findByZipCode for AddressApiIntegration
+2024-07-21T14:34:00.875-03:00  INFO [ms-employee,,] 16656 --- [http-nio-8082-exec-2] c.d.s.e.s.redis.AddressRedisService      : Start save cache Address. class AddressResponseVO {
+    id: 669d4687d8f46f4e0d96b3ca
+    street: Rua Maria Saturnina de Jesus
+    neighborhood: Forquilhas
+    number: null
+    city: São José
+    state: SC
+    zip: 88107-846
+}
+2024-07-21T14:34:01.615-03:00  INFO [ms-employee,,] 16656 --- [http-nio-8082-exec-4] c.d.s.e.i.AddressApiIntegration          : Start findByZipCode for AddressApiIntegration
+2024-07-21T14:34:01.627-03:00  INFO [ms-employee,,] 16656 --- [http-nio-8082-exec-4] c.d.s.e.s.redis.AddressRedisService      : Start save cache Address. class AddressResponseVO {
+    id: 669d4687d8f46f4e0d96b3ca
+    street: Rua Maria Saturnina de Jesus
+    neighborhood: Forquilhas
+    number: null
+    city: São José
+    state: SC
+    zip: 88107-846
+}
+2024-07-21T14:35:34.145-03:00  INFO [ms-employee,,] 16656 --- [http-nio-8082-exec-6] c.d.s.e.i.AddressApiIntegration          : Start findByZipCode for AddressApiIntegration
+2024-07-21T14:35:34.165-03:00  INFO [ms-employee,,] 16656 --- [http-nio-8082-exec-6] c.d.s.e.s.redis.AddressRedisService      : Start save cache Address. class AddressResponseVO {
+    id: 669d4687d8f46f4e0d96b3ca
+    street: Rua Maria Saturnina de Jesus
+    neighborhood: Forquilhas
+    number: null
+    city: São José
+    state: SC
+    zip: 88107-846
+}
+2024-07-21T14:36:03.076-03:00  INFO [ms-employee,,] 16656 --- [http-nio-8082-exec-2] c.d.s.e.i.AddressApiIntegration          : Start findByZipCode for AddressApiIntegration
+2024-07-21T14:36:03.443-03:00  INFO [ms-employee,,] 16656 --- [http-nio-8082-exec-2] c.d.s.e.s.redis.AddressRedisService      : Start save cache Address. class AddressResponseVO {
+    id: 669d4687d8f46f4e0d96b3ca
+    street: Rua Maria Saturnina de Jesus
+    neighborhood: Forquilhas
+    number: null
+    city: São José
+    state: SC
+    zip: 88107-846
+}
+2024-07-21T14:36:17.001-03:00  INFO [ms-employee,,] 16656 --- [http-nio-8082-exec-6] c.d.s.e.i.AddressApiIntegration          : Start findByZipCode for AddressApiIntegration
+2024-07-21T14:36:17.028-03:00  INFO [ms-employee,,] 16656 --- [http-nio-8082-exec-6] c.d.s.e.s.redis.AddressRedisService      : Start save cache Address. class AddressResponseVO {
+    id: 669d4687d8f46f4e0d96b3ca
+    street: Rua Maria Saturnina de Jesus
+    neighborhood: Forquilhas
+    number: null
+    city: São José
+    state: SC
+    zip: 88107-846
+}
+2024-07-21T14:36:20.349-03:00  INFO [ms-employee,,] 16656 --- [http-nio-8082-exec-8] c.d.s.e.i.AddressApiIntegration          : Start findByZipCode for AddressApiIntegration
+2024-07-21T14:36:20.363-03:00  INFO [ms-employee,,] 16656 --- [http-nio-8082-exec-8] c.d.s.e.s.redis.AddressRedisService      : Start save cache Address. class AddressResponseVO {
+    id: 669d4687d8f46f4e0d96b3ca
+    street: Rua Maria Saturnina de Jesus
+    neighborhood: Forquilhas
+    number: null
+    city: São José
+    state: SC
+    zip: 88107-846
+}
+2024-07-21T14:36:20.884-03:00  INFO [ms-employee,,] 16656 --- [http-nio-8082-exec-9] c.d.s.e.i.AddressApiIntegration          : Start findByZipCode for AddressApiIntegration
+2024-07-21T14:36:20.898-03:00  INFO [ms-employee,,] 16656 --- [http-nio-8082-exec-9] c.d.s.e.s.redis.AddressRedisService      : Start save cache Address. class AddressResponseVO {
+    id: 669d4687d8f46f4e0d96b3ca
+    street: Rua Maria Saturnina de Jesus
+    neighborhood: Forquilhas
+    number: null
+    city: São José
+    state: SC
+    zip: 88107-846
+}
+2024-07-21T17:04:16.590-03:00  INFO [ms-employee,,] 16656 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-21T17:04:16.778-03:00  INFO [ms-employee,,] 16656 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-21T17:04:16.787-03:00  INFO [ms-employee,,] 16656 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-21T17:04:35.308-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] c.d.s.e.EmployeeApiApplication           : Starting EmployeeApiApplication using Java 17.0.8 with PID 30304 (D:\projetos\sboot-employee-api-circuit-breaker-postegres\target\classes started by dowgl in D:\projetos\sboot-employee-api-circuit-breaker-postegres)
+2024-07-21T17:04:35.311-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] c.d.s.e.EmployeeApiApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-07-21T17:04:35.374-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-07-21T17:04:35.375-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-07-21T17:04:36.372-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-07-21T17:04:36.372-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-07-21T17:04:36.396-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 0 Redis repository interfaces.
+2024-07-21T17:04:36.795-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-07-21T17:04:36.796-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-21T17:04:36.965-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 164 ms. Found 1 JPA repository interface.
+2024-07-21T17:04:36.972-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-07-21T17:04:36.973-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-07-21T17:04:36.979-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.dmaia.software.employeeapi.repository.EmployeeRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2024-07-21T17:04:36.980-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2024-07-21T17:04:37.310-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=597909c8-4e46-32a2-a3da-3e26178cf8df
+2024-07-21T17:04:38.441-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2024-07-21T17:04:38.453-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-21T17:04:38.454-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-07-21T17:04:38.531-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-21T17:04:38.532-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3157 ms
+2024-07-21T17:04:38.780-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-21T17:04:38.958-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1e0c937d
+2024-07-21T17:04:38.960-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-21T17:04:38.969-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost/employeedb'
+2024-07-21T17:04:39.364-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-21T17:04:39.446-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.22.Final
+2024-07-21T17:04:39.449-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2024-07-21T17:04:39.799-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-21T17:04:39.941-03:00  WARN [ms-employee,,] 30304 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-07-21T17:04:40.851-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-21T17:04:40.966-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-21T17:04:42.050-03:00  WARN [ms-employee,,] 30304 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-21T17:04:43.256-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-07-21T17:04:43.403-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 4 endpoint(s) beneath base path '/actuator'
+2024-07-21T17:04:43.489-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2024-07-21T17:04:43.601-03:00  INFO [ms-employee,,] 30304 --- [restartedMain] c.d.s.e.EmployeeApiApplication           : Started EmployeeApiApplication in 8.904 seconds (process running for 10.726)
+2024-07-21T17:04:48.437-03:00  INFO [ms-employee,,] 30304 --- [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-21T17:04:48.438-03:00  INFO [ms-employee,,] 30304 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-21T17:04:48.439-03:00  INFO [ms-employee,,] 30304 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-21T17:07:43.027-03:00  INFO [ms-employee,,] 30304 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-21T17:07:43.033-03:00  INFO [ms-employee,,] 30304 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-21T17:07:43.037-03:00  INFO [ms-employee,,] 30304 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-21T17:07:49.062-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] c.d.s.e.EmployeeApiApplication           : Starting EmployeeApiApplication using Java 17.0.8 with PID 1688 (D:\projetos\sboot-employee-api-circuit-breaker-postegres\target\classes started by dowgl in D:\projetos\sboot-employee-api-circuit-breaker-postegres)
+2024-07-21T17:07:49.065-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] c.d.s.e.EmployeeApiApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-07-21T17:07:49.144-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-07-21T17:07:49.144-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-07-21T17:07:50.062-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-07-21T17:07:50.062-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-07-21T17:07:50.086-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
+2024-07-21T17:07:50.538-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-07-21T17:07:50.540-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-21T17:07:50.687-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 143 ms. Found 1 JPA repository interface.
+2024-07-21T17:07:50.693-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-07-21T17:07:50.693-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-07-21T17:07:50.699-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.dmaia.software.employeeapi.repository.EmployeeRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2024-07-21T17:07:50.700-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 0 Redis repository interfaces.
+2024-07-21T17:07:51.027-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=597909c8-4e46-32a2-a3da-3e26178cf8df
+2024-07-21T17:07:52.343-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2024-07-21T17:07:52.367-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-21T17:07:52.367-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-07-21T17:07:52.460-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-21T17:07:52.461-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3315 ms
+2024-07-21T17:07:52.823-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-21T17:07:53.075-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1466dc41
+2024-07-21T17:07:53.079-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-21T17:07:53.098-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost/employeedb'
+2024-07-21T17:07:53.700-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-21T17:07:53.863-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.22.Final
+2024-07-21T17:07:53.867-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2024-07-21T17:07:54.258-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-21T17:07:54.325-03:00  WARN [ms-employee,,] 1688 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-07-21T17:07:55.030-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-21T17:07:55.078-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-21T17:07:57.195-03:00  WARN [ms-employee,,] 1688 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-21T17:07:58.902-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-07-21T17:07:59.039-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 4 endpoint(s) beneath base path '/actuator'
+2024-07-21T17:07:59.137-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2024-07-21T17:07:59.264-03:00  INFO [ms-employee,,] 1688 --- [restartedMain] c.d.s.e.EmployeeApiApplication           : Started EmployeeApiApplication in 10.818 seconds (process running for 11.348)
+2024-07-21T17:08:03.443-03:00  INFO [ms-employee,,] 1688 --- [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-21T17:08:03.444-03:00  INFO [ms-employee,,] 1688 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-21T17:08:03.446-03:00  INFO [ms-employee,,] 1688 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-07-21T17:08:33.242-03:00  INFO [ms-employee,,] 1688 --- [http-nio-8082-exec-8] c.d.s.e.s.impl.FindEmployeeServiceImp    : Start findByEnroll with ENROLL: 224922
+2024-07-21T17:08:37.053-03:00  INFO [ms-employee,,] 1688 --- [http-nio-8082-exec-10] c.d.s.e.services.impl.CreateServiceImp   : Start create with employeeRequest: class CrateEmployeeRequestVO {
+    name: Maia JR
+    cpf: 52697436049
+    email: employee@email.com.op
+    zipCode: 88107-846
+}
+2024-07-21T17:08:37.068-03:00 ERROR [ms-employee,,] 1688 --- [http-nio-8082-exec-10] c.d.s.e.services.impl.CreateServiceImp   : isNotUnicEmail
+2024-07-21T17:08:38.943-03:00  INFO [ms-employee,,] 1688 --- [http-nio-8082-exec-2] c.d.s.e.services.impl.CreateServiceImp   : Start create with employeeRequest: class CrateEmployeeRequestVO {
+    name: Maia JR
+    cpf: 52697436049
+    email: employee@email.com.op
+    zipCode: 88107-846
+}
+2024-07-21T17:08:38.948-03:00 ERROR [ms-employee,,] 1688 --- [http-nio-8082-exec-2] c.d.s.e.services.impl.CreateServiceImp   : isNotUnicEmail
+2024-07-21T17:08:39.956-03:00  INFO [ms-employee,,] 1688 --- [http-nio-8082-exec-3] c.d.s.e.services.impl.CreateServiceImp   : Start create with employeeRequest: class CrateEmployeeRequestVO {
+    name: Maia JR
+    cpf: 52697436049
+    email: employee@email.com.op
+    zipCode: 88107-846
+}
+2024-07-21T17:08:39.961-03:00 ERROR [ms-employee,,] 1688 --- [http-nio-8082-exec-3] c.d.s.e.services.impl.CreateServiceImp   : isNotUnicEmail
+2024-07-21T17:08:45.105-03:00  INFO [ms-employee,,] 1688 --- [http-nio-8082-exec-5] c.d.s.e.services.impl.CreateServiceImp   : Start create with employeeRequest: class CrateEmployeeRequestVO {
+    name: Maia JR
+    cpf: 52697436049
+    email: employee@email.com
+    zipCode: 88107-846
+}
+2024-07-21T17:08:45.111-03:00 ERROR [ms-employee,,] 1688 --- [http-nio-8082-exec-5] c.d.s.e.services.impl.CreateServiceImp   : isNotUnicEmail
+2024-07-21T17:20:56.199-03:00  INFO [ms-employee,,] 1688 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-21T17:20:56.219-03:00  INFO [ms-employee,,] 1688 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-21T17:20:56.224-03:00  INFO [ms-employee,,] 1688 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

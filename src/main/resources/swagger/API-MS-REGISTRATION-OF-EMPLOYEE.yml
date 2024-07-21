@@ -1,0 +1,252 @@
+openapi: 3.0.3
+info:
+  title: API-MS-REGISTRATION-OF-EMPLOYEE
+  description: |
+    Perform the registration of employees
+  contact: {}
+  version: 1.0.0
+servers:
+  - url: https://localhost:8080/api/v1/
+
+paths:
+  /employees:
+    post:
+      tags:
+        - Employee
+      summary: "create"
+      description: Method for registering a new employee
+      operationId: create
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CrateEmployeeRequest'
+        required: true
+      responses:
+        201:
+          description: Created
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+
+        403:
+          description: Forbidden
+            violada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+        405:
+          description: Method Not Allowed
+            violada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+        415:
+          description: Unsupported Media Type
+            violada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+        422:
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+        503:
+          description: Service Unavaliable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+
+  /employees/{enroll}:
+    get:
+      tags:
+        - Employee
+      summary: "getByEnroll"
+      description: Method to Employee
+      operationId: getByEnroll
+      parameters:
+        - name: enroll
+          in: path
+          description: Enroll of Employee
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetEmployeeResponse'
+
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+
+        403:
+          description: Forbidden
+            violada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+        405:
+          description: Method Not Allowed
+            violada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+        415:
+          description: Unsupported Media Type
+            violada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+        422:
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+        503:
+          description: Service Unavaliable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+
+
+
+components:
+  schemas:
+    CrateEmployeeRequest:
+      required:
+        - name
+        - cpf
+        - email
+        - zipCode
+      type: object
+      properties:
+        name:
+          maxLength: 255
+          type: string
+          nullable: true
+          example: 'Maia JR'
+        cpf:
+          maxLength: 20
+          nullable: true
+          type: string
+          example: '02308611000'
+        email:
+          maxLength: 50
+          nullable: true
+          type: string
+          #pattern: '^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$'
+          example: 'employee@email.com'
+        zipCode:
+          type: string
+          example: '01214-000'
+
+    GetEmployeeResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 'a5ef3310-a0a1-11ed-a8fc-0242ac120002'
+        name:
+          type: string
+          example: 'Maia JR'
+        cpf:
+          type: string
+          example: '02308611000'
+        email:
+          nullable: true
+          type: string
+          example: 'employee@email.com'
+        enroll:
+          type: string
+          example: '20121300'
+        date-crated:
+          type: string
+          #format: date-time
+          example: '2023-01-20'
+        date-update:
+          type: string
+          #format: date-time
+          example: '2023-01-20'
+        address:
+          $ref: '#/components/schemas/AddressResponse'
+
+    AddressResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the address
+        street:
+          type: string
+          description: Street address
+          example: 437 Lytton Ave
+        neighborhood:
+          type: string
+          example: Center
+        number:
+          type: string
+          description: Street number
+          example: 437
+        city:
+          type: string
+          description: City
+          example: Palo Alto
+        state:
+          type: string
+          description: State abbreviation
+          example: CA
+        zip:
+          type: string
+          description: ZIP code
+          example: '94301'
+
+
+
+    ResponseError:
+      title: Error
+      type: object
+      properties:
+        code:
+          maxLength: 255
+          type: string
+          description: Code
+        message:
+          maxLength: 2048
+          type: string
+          description: Message

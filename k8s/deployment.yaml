@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgre
+spec:
+  selector:
+    matchLabels:
+      app: postgre
+  template:
+    metadata:
+      labels:
+        app: postgre
+    spec:
+      containers:
+        - name: postgre
+          image: postgres:14.12-alpine3.18
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_USER
+              value: maia
+            - name: POSTGRES_PASSWORD
+              value: maiapw
+            - name: POSTGRES_DB
+              value: skill
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgre
+spec:
+  selector:
+    app: postgre
+  ports:
+    - port: 5432
+      targetPort: 5432
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+        - name: api
+          image: dowglasmaia/admin-skill-api:v4
+          ports:
+            - containerPort: 8005
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://postgre:5432/skill
+            - name: SPRING_DATASOURCE_USERNAME
+              value: maia
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: ""
+            - name: AWS_ACCESS_KEY
+              value: ""
+            - name: AWS_ACCESS_SECRET
+              value: ""
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: api
+spec:
+  selector:
+    app: api
+  ports:
+    - port: 80
+      targetPort: 8005
+  type: LoadBalancer

@@ -1,53 +1,88 @@
+server:
+  port: 8082
+
 spring:
   application:
-    name: address-api
-  data:
-    mongodb:
-      host: mongo
-      port: 27017
-      authentication-database: admin
-      username: root
-      password: example
-      database: addressdb
+    name: "ms-employee"
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: jdbc:postgresql://localhost/employeedb
+    username: maia
+    password: maiapw
+    driver-class-name: org.postgresql.Driver
+    port: 5432
+
 
 management:
   tracing:
     sampling:
-      probability: 1.0
-  endpoints:
-    web:
-      exposure:
-        include: '*'
+      probability: 1
   endpoint:
     health:
       show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  health:
+    circuitbreakers:
+      enabled: true
+    ratelimiters:
+      enabled: true
   metrics:
     enable:
       jvm: true
     export:
       prometheus:
         enabled: true
-    tags:
-      application: address-api
     distribution:
       slo:
         http: '5ms,10ms,25ms,50ms,100ms,200ms,300ms,400ms,500ms,1s,2s'
-      percentiles-histogram:
-        http:
-          server:
-            requests: true
+    tags:
+      application: 'ms-employee'
 
-client:
-  viaCep:
-    uri: https://viacep.com.br/ws/
+#Circuit Breaker
+resilience4j:
+  circuitbreaker:
+    instances:
+      address:
+        slidingWindowType: COUNT_BASED
+        registerHealthIndicator: true
+        slidingWindowSize: 6
+        failureRateThreshold: 50
+        slowCallDurationThreshold: 100
+        slowCallRateThreshold: 80
+        waitDurationInOpenState: 60s
+        permittedNumberOfCallsInHalfOpenState: 3
+        enableAutomaticTransitionFromOpenToClosedState: true
+        transitionFromOpenToClosedStateOnSuccessfulCall: true
 
+
+api:
+  base:
+    url:
+      address: http://localhost:8088/
+
+logging:
+  file:
+    name: logs/ms-employee.log
+  pattern:
+    level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
+
+
+
+# project
 info:
   app:
-    name: '@project.name@'
-    description: '@project.description@'
-    version: '@project.version@'
-    encoding: '@project.build.sourceEncoding@'
+    name: @project.name@
+    description: @project.description@
+    version: @project.version@
+    encoding: @project.build.sourceEncoding@
     java:
-      version: '@java.version@'
-server:
-  port: 8088
+      version: @java.version@
