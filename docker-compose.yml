@@ -1,0 +1,75 @@
+version: '3.8'
+
+networks:
+  api:
+
+services:
+  collector-api:
+    image: otel/opentelemetry-collector:latest
+    container_name: collector-api
+    volumes:
+      - ./collector/otel-collector-config.yaml:/etc/otel-collector-config.yaml
+    command: ["--config=/etc/otel-collector-config.yaml"]
+    ports:
+      - 4317:4317
+      - 4318:4318
+    networks:
+      - api
+
+  jaeger-api:
+    image: jaegertracing/opentelemetry-all-in-one
+    container_name: jaeger-api
+    ports:
+      - 16686:16686
+    networks:
+      - api
+    depends_on:
+      - collector-api
+
+  api:
+    #build:
+      #context: .
+      #dockerfile: Dockerfile
+    image: dowglasmaia/address-api
+    container_name: address-api
+    networks:
+      - api
+    ports:
+      - 8088:8088
+    restart: unless-stopped
+    environment:
+      - SPRING_DATA_MONGODB_HOST=mongo
+      - SPRING_DATA_MONGODB_PORT=27017
+      - SPRING_DATA_MONGODB_DATABASE=addressdb
+      - SPRING_DATA_MONGODB_USERNAME=root
+      - SPRING_DATA_MONGODB_PASSWORD=example
+      - DOTEL_SERVICE_NAME=address-api
+      - DOTEL_TRACES_EXPORTER=otlp
+      - DOTEL_METRICS_EXPORTER=none
+      - DOTEL_EXPORTER_OTLP_ENDPOINT=http://collector-api:4318
+      - DOTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
+
+  mongo:
+    container_name: mongo
+    image: mongo
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    networks:
+      - api
+
+  mongo-express:
+    image: mongo-express
+    restart: unless-stopped
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+      ME_CONFIG_BASICAUTH: false
+    networks:
+      - api

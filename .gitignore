@@ -31,6 +31,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-docker/prometheus/prometheus_data/
-docker/grafana/
