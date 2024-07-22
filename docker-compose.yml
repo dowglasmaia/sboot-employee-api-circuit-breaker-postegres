@@ -131,11 +131,11 @@ services:
   sonarqube:
     image: sonarqube:lts-community
     depends_on:
-      - postegre_db
+      - db-sonar
     networks:
       - maianet
     environment:
-      SONAR_JDBC_URL: jdbc:postgresql://db:5432/sonar
+      SONAR_JDBC_URL: jdbc:postgresql://postegre_db:5432/sonar
       SONAR_JDBC_USERNAME: maia
       SONAR_JDBC_PASSWORD: maiapw
     ports:
@@ -143,6 +143,17 @@ services:
     volumes:
       - sonar_data:/opt/sonarqube/data
       - sonar_logs:/opt/sonarqube/logs
+
+  db-sonar:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: sonar
+      POSTGRES_PASSWORD: sonar
+      POSTGRES_DB: sonar
+    networks:
+      - maianet
+    volumes:
+      - sonar_db:/var/lib/postgresql
 
 networks:
   maianet:
@@ -154,3 +165,4 @@ volumes:
   prometheus_data:
   sonar_data:
   sonar_logs:
+  sonar_db:
