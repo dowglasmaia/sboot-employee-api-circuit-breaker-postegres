@@ -1,3 +1,0 @@
-0000000000000000000000000000000000000000 d9ec510dca085bfed9c93b53155a222c358e874a Dowglas Maia <dowglasmaia@gmail.com> 1720198861 -0300	clone: from https://github.com/dowglasmaia/sboot-employee-api-circuit-breaker-postegres.git
-d9ec510dca085bfed9c93b53155a222c358e874a 2447f3fc33f732e1e755e3659a7d076ba1cf6266 Dowglas Maia <dowglasmaia@gmail.com> 1721583483 -0300	commit: Add configurações para coleta de log com Grafana Loki e promtail
-2447f3fc33f732e1e755e3659a7d076ba1cf6266 a9ccbb05900a76efab87c2125346f8ff6e1ee5ce Dowglas Maia <dowglasmaia@gmail.com> 1721583565 -0300	commit: Add configurações para coleta de log com Grafana Loki e promtail

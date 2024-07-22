@@ -1,5 +1,8 @@
 HELP.md
 target/
+tmp/
+logs/
+grafana/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/

@@ -164,9 +164,19 @@ public class AddressApiIntegration {
 
 ---
 
+### SONARQUBE -CONFIG:
+  - SONAR-CLI:  https://hub.docker.com/r/sonarsource/sonar-scanner-cli
+  - 1º - Criar o projeto no Sonar e o token para o projeto. : http://localhost:9000
+  - 2º - EXECUTAR O SONAR-CLI:  docker container run --rm --network=host -e SONAR_HOST_URL="http://localhost:9000" -v "./src:/usr/src" sonarsource/sonar-scanner-cli -Dsonar.projectKey=employee-service -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqp_00906586eb5437de8528f2f0b40d87af9c7fb97f
+  - 3º - EXECUTAR PARA O PROJETO: mvn clean verify sonar:sonar -Dsonar.projectKey=employee-service -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqp_00906586eb5437de8528f2f0b40d87af9c7fb97f
+
+
 ### Technology References
 * [Resilience4j Docs](https://resilience4j.readme.io/docs/circuitbreaker)
 * [Spring Boot3](https://docs.spring.io/spring-boot/docs/3.1.11/reference/html/)
+* [SonarQube](https://www.sonarsource.com/)
+* [Grafana Loki](https://grafana.com/docs/loki/latest/)
+* [Grafana](https://grafana.com/oss/grafana/)
 
 
 
